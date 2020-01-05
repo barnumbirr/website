@@ -1,0 +1,2 @@
+ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDmzIbLy5F/HnzkCu3QA57E5z3dsXv6kX5/g6OAGpkFM me@martinsimon.me
+
