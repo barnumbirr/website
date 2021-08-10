@@ -3,18 +3,19 @@ body {
     height: 100%;
     width: 100%;
     font-family: monospace;
-    font-size: 15px;
+    font-size: 16px;
+    font-weight: .font-regular;
     color: #000;
     margin: 5px 0 0 0;
 }
 * {
     font-family: monospace;
-    font-size: 15px;
+    font-size: 16px;
     color: #000;
 }
 h1 {
-    font-size: 16px;
-    font-weight: 700;
+    font-size: 17px;
+    font-weight: .font-heavy;
     color: #a00000;
     margin: 15px 0 0 0;
 }
@@ -34,11 +35,13 @@ h1 {
 }
 a {
     color: #1030ff;
+    text-decoration: none;
 }
-a:hover,
-a:focus,
-a:active {
-    color: red;
+a:visited {
+    color: #4080dd;
+}
+a:hover, a:focus, a:active {
+    color: #ff0000;
     background-color: #ffe0e0;
     text-decoration: underline;
 }
@@ -57,8 +60,11 @@ a:active {
 .font-regular {
     font-weight: 400;
 }
-.font-heavy {
+.font-bold {
     font-weight: 700;
+}
+.font-heavy {
+    font-weight: 900;
 }
 .footer {
     color: #ccc;
