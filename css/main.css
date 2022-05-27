@@ -1,9 +1,10 @@
- :root {
+:root {
     --font-color: #000000;
     --bg-color: #ffffff;
     --heading-color: #a00000;
     --link-font-color: #1030ff;
     --link-visited-font-color: #4080dd;
+    --link-file-font-color: #006000;
     --link-hover-font-color: #ff0000;
     --link-visited-bg-color: #ffe0e0;
     --footer-font-color: #cccccc;
@@ -14,6 +15,7 @@
     --heading-color: #a00000;
     --link-font-color:  #0280ff ;
     --link-visited-font-color: #6cb4fc;
+    --link-file-font-color: #008000;
     --link-hover-font-color: #ff0000;
     --link-visited-bg-color:  #ffe0e0;
     --footer-font-color: #5b6371;
@@ -22,7 +24,7 @@ body {
     height: 100%;
     width: 100%;
     font-family: monospace;
-    font-size: 15px;
+    font-size: 16px;
     font-weight: font-regular;
     background-color: var(--bg-color);
     color: var(--font-color);
@@ -32,12 +34,23 @@ a {
     color: var(--link-font-color);
     text-decoration: none;
 }
+a.file {
+    color: var(--link-file-font-color);
+    text-decoration: none;
+}
 a:visited {
     color: var(--link-visited-font-color);
+}
+a.file:visited {
+    all: unset;
 }
 a:hover, a:focus, a:active {
     color: var(--link-hover-font-color);
     background-color: var(--link-visited-bg-color);
+    text-decoration: underline;
+}
+a.file:hover, a.file:focus, a.file:active {
+    all: unset;
     text-decoration: underline;
 }
 h1 {
@@ -45,6 +58,9 @@ h1 {
     font-weight: font-heavy;
     color: var(--heading-color);
     margin: 15px 0 0 0;
+}
+i {
+    color: var(--link-file-font-color);
 }
 input:checked + .slider {
     background-color: #66bb6a;
