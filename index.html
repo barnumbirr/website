@@ -11,7 +11,11 @@
   <link rel="shortcut icon" href="./img/favicon.ico" type="image/x-icon">
   <link rel="icon" href="./img/favicon.ico" type="image/x-icon">
   <script type="text/javascript">const getAge = birthDate => Math.floor((new Date() - new Date(birthDate).getTime()) / 3.15576e+10)</script>
-  <script defer data-domain="simon.tf" src="https://plausible.io/js/plausible.outbound-links.js"></script>
+  <script defer src="/zk/js/script.js"></script>
+  <script>
+    window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
+    plausible.init({ endpoint: "/zk/api/event" })
+  </script>
 </head>
 <body>
   <div class="container">
