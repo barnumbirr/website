@@ -7,23 +7,17 @@
     --link-file-font-color: #008000;
     --link-hover-font-color: #ff0000;
     --link-visited-bg-color: #ffe0e0;
-    --slider-color: #4eb153;
-    --slider-bg-color: #cccccc;
-    --slider-bg-color-before: #fff;
     --footer-font-color: #cccccc;
 }
 [data-theme="dark"] {
-    --font-color: #ffffff;
-    --bg-color: #1a1c20;;
-    --heading-color: #a00000;
-    --link-font-color:  #0280ff ;
+    --font-color: #d4d4d4;
+    --bg-color: #1a1c20;
+    --heading-color: #e06060;
+    --link-font-color: #0280ff;
     --link-visited-font-color: #6cb4fc;
-    --link-file-font-color: #008000;
-    --link-hover-font-color: #ff0000;
-    --link-visited-bg-color:  #ffe0e0;
-    --slider-color: #4eb153;
-    --slider-bg-color: #cccccc;
-    --slider-bg-color-before: #fff;
+    --link-file-font-color: #3fb950;
+    --link-hover-font-color: #ff6666;
+    --link-visited-bg-color: #3d1f1f;
     --footer-font-color: #5b6371;
 }
 body {
@@ -31,14 +25,24 @@ body {
     width: 100%;
     font-family: monospace;
     font-size: 16px;
-    font-weight: font-regular;
+    font-weight: 400;
     background-color: var(--bg-color);
     color: var(--font-color);
     margin: 5px 0 0 0;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+::selection {
+    background-color: #b3d4fc;
+    color: #000000;
+}
+[data-theme="dark"] ::selection {
+    background-color: #264f78;
+    color: #ffffff;
 }
 a {
     color: var(--link-font-color);
     text-decoration: none;
+    transition: color 0.3s ease, background-color 0.3s ease;
 }
 a.file {
     color: var(--link-file-font-color);
@@ -49,7 +53,7 @@ a:visited {
     color: var(--link-visited-font-color);
 }
 a.file:visited {
-    all: unset;
+    color: var(--link-file-font-color);
 }
 a:hover, a:focus, a:active {
     color: var(--link-hover-font-color);
@@ -57,70 +61,67 @@ a:hover, a:focus, a:active {
     text-decoration: underline;
 }
 a.file:hover, a.file:focus, a.file:active {
-    all: unset;
+    color: var(--link-file-font-color);
     text-decoration: underline;
     font-weight: bold;
 }
 h1 {
     font-size: 16px;
-    font-weight: font-heavy;
+    font-weight: 900;
     color: var(--heading-color);
     margin: 15px 0 0 0;
+    transition: color 0.3s ease;
 }
 i {
     color: var(--link-file-font-color);
+    transition: color 0.3s ease;
 }
-input:checked + .slider {
-    background-color: var(--slider-color);
-}
-input:checked + .slider:before {
-    transform: translateX(13px);
-}
-.theme-switcher {
-    padding-top: 10px;
+.footer-row {
     display: flex;
-    float:  right;
+    justify-content: center;
     align-items: center;
-}
-.theme-switcher em {
-    margin-left: 10px;
-    margin-right: 10px;
-    font-size: 12px;
-}
-.theme-switch {
-    display: inline-block;
-    height: 17px;
     position: relative;
-    width: 30px;
 }
-.theme-switch input {
-    display: none;
-}
-.slider {
-    background-color: var(--slider-bg-color);
-    bottom: 0;
-    cursor: pointer;
-    left: 0;
+.theme-toggle {
     position: absolute;
     right: 0;
-    top: 0;
-    transition: .4s;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+    color: var(--footer-font-color);
+    transition: color 0.3s ease;
 }
-.slider:before {
-    background-color: var(--slider-bg-color-before);
-    bottom: 2px;
-    content: "";
-    height: 13px;
-    left: 2px;
-    position: absolute;
-    transition: .4s;
-    width: 13px;
+.theme-toggle:hover {
+    color: var(--font-color);
 }
-.slider.round {
-    border-radius: 17px;
+.theme-toggle-sun,
+.theme-toggle-moon {
+    font-size: 10px;
+    line-height: 1;
 }
-.slider.round:before {
+.theme-toggle-track {
+    display: inline-block;
+    width: 24px;
+    height: 14px;
+    background-color: var(--footer-font-color);
+    border-radius: 7px;
+    position: relative;
+    transition: background-color 0.3s ease;
+}
+.theme-toggle-thumb {
+    display: block;
+    width: 10px;
+    height: 10px;
+    background-color: var(--bg-color);
     border-radius: 50%;
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+[data-theme="dark"] .theme-toggle-thumb {
+    transform: translateX(10px);
 }
 .left {
     text-align: left;
@@ -160,6 +161,7 @@ input:checked + .slider:before {
 .footer {
     color: var(--footer-font-color);
     font-size: 11px;
+    transition: color 0.3s ease;
 }
 .container {
     width: 90%;
@@ -171,9 +173,7 @@ input:checked + .slider:before {
     width: 100%;
 }
 .row > [class^="col"] {
-    float: right;
     margin: 0.5rem 1%;
-    min-height: 0.125rem;
 }
 .row [class^="col"] {
     float: left;

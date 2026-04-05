@@ -1,22 +1,24 @@
-const toggleSwitch = document.querySelector('.theme-switch input[type="checkbox"]');
-const currentTheme = localStorage.getItem('theme');
+var themeToggle = document.getElementById('theme-toggle');
+var themeColor = document.querySelector('meta[name="theme-color"]');
+var currentTheme = localStorage.getItem('theme') || 'light';
 
-if (currentTheme) {
-    document.documentElement.setAttribute('data-theme', currentTheme);
-    if (currentTheme === 'dark') {
-        toggleSwitch.checked = true;
-    }
+function applyTheme(theme) {
+    document.documentElement.setAttribute('data-theme', theme);
+    localStorage.setItem('theme', theme);
+    themeToggle.setAttribute('aria-checked', theme === 'dark');
+    themeColor.setAttribute('content', theme === 'dark' ? '#1a1c20' : '#ffffff');
 }
 
-function switchTheme(e) {
-    if (e.target.checked) {
-        document.documentElement.setAttribute('data-theme', 'dark');
-        localStorage.setItem('theme', 'dark');
-    }
-    else {
-        document.documentElement.setAttribute('data-theme', 'light');
-        localStorage.setItem('theme', 'light');
-    }
-}
+applyTheme(currentTheme);
 
-toggleSwitch.addEventListener('change', switchTheme, false);
+themeToggle.addEventListener('click', function() {
+    var next = localStorage.getItem('theme') === 'dark' ? 'light' : 'dark';
+    applyTheme(next);
+});
+
+themeToggle.addEventListener('keydown', function(e) {
+    if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        themeToggle.click();
+    }
+});

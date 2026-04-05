@@ -1,18 +1,23 @@
 function initEmailLink() {
-  const emailLink = document.getElementById('email');
+  var emailLink = document.getElementById('email');
   if (!emailLink) return;
 
-  const originalText = emailLink.textContent;
-  const emailText = 'martin AT simon.tf';
+  var originalText = emailLink.textContent;
+  var emailText = 'martin AT simon.tf';
+  var showing = false;
 
   emailLink.addEventListener('click', function(e) {
     e.preventDefault();
+    showing = !showing;
+    this.textContent = showing ? emailText : originalText;
   });
   emailLink.addEventListener('mouseenter', function() {
     this.textContent = emailText;
   });
   emailLink.addEventListener('mouseleave', function() {
-    this.textContent = originalText;
+    if (!showing) {
+      this.textContent = originalText;
+    }
   });
 }
 
